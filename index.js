@@ -3,6 +3,12 @@ const app = express();
 const routes = require("./src/routes/app");
 require("dotenv").config();
 
+app.use(
+  require("cors")({
+    origin: "*",
+  })
+);
+
 app.use("/", routes);
 
 app.listen(process.env.PORT || 8080, () => {
