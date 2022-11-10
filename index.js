@@ -25,7 +25,6 @@ io.on("connection", (socket) => {
   console.log("conectet");
   socket.on("getRealTimeTweets", () => {
     getTweetsStream(io);
-    // io.emit("tweet", "hai");
   });
 });
 

@@ -32,9 +32,10 @@ const getTweets = async (req, res) => {
 const getRules = async (req, res) => {
   try {
     let rules = await axios.get(
-      `${twitterBaseUrl}/tweets/search/stream/rules}`
+      `${twitterBaseUrl}/tweets/search/stream/rules`,
+      twitterConfig
     );
-    res.send(rules);
+    res.send(rules.data);
   } catch (error) {
     res.send(error?.response?.data);
   }
@@ -74,4 +75,5 @@ module.exports = {
   getTweets,
   getTweetsStream,
   deleteRules,
+  getRules,
 };

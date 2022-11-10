@@ -3,6 +3,8 @@ const router = new express.Router();
 const {
   getTweets,
   getTweetsStream,
+  getRules,
+  deleteRules,
 } = require("../controllers/getTweets/getTweets");
 const { validateRequestQuery } = require("zod-express-middleware");
 const {
@@ -14,5 +16,9 @@ router.get(
   validateRequestQuery(searchTweetApiSchema),
   getTweets
 );
+
+router.get("/rules/get", getRules);
+
+router.delete("/rule/delete", deleteRules);
 
 module.exports = router;
