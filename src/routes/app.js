@@ -1,6 +1,9 @@
 const express = require("express");
 const router = new express.Router();
-const { getTweets } = require("../controllers/getTweets/getTweets");
+const {
+  getTweets,
+  getTweetsStream,
+} = require("../controllers/getTweets/getTweets");
 const { validateRequestQuery } = require("zod-express-middleware");
 const {
   searchTweetApiSchema,
