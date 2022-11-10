@@ -11,20 +11,21 @@ const { changeRules } = require("./utils");
 
 const getTweets = async (req, res) => {
   console.log(req.query);
-
+  // console.log(decodeURIComponent(req.query.query));
   try {
-    let resp = await axios.get(
-      `${twitterBaseUrl}/tweets/search/recent?query=%23${req.query.query}&${options}`,
-      twitterConfig
-    );
+    // this api call is only needed if we want to get recent tweets
+    // let resp = await axios.get(
+    //   `${twitterBaseUrl}/tweets/search/recent?query=%23${req.query.query}&${options}`,
+    //   twitterConfig
+    // );
 
     await changeRules({
-      add: [{ value: `#${req.query.query}` }],
+      add: [{ value: `${req.query.query}` }],
     });
 
-    res.send({ ...resp.data });
+    res.send();
   } catch (error) {
-    console.log(error.response.data);
+    console.log(error.response.data,'error');
     res.send(error?.response?.data);
   }
 };
